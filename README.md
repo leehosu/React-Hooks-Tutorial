@@ -2,6 +2,8 @@
 
 > velopert님의 https://velog.io/@velopert/react-hooks를 참고하여 공부한 repo이다.
 
+![hooks](./image/hooks.png)
+
 ## What is Hooks?
 
 `Hooks`는 React `v16.8`에 도입된 기능으로써, 함수형 컴포넌트에서도 `상태 관리`를 할 수 있는 `useState`, 렌더링 직후 작업을 설정하는 `useEffect` 등의 기능등을 제공하여 기존의 함수형 컴포넌트에서 할 수 없었던 다양한 작업을 할 수 있게 한다.
