@@ -9,7 +9,7 @@ const App = () => {
       <Counter />
       <div className = "visible">
         <button onClick = {() => {setVisible(!visible);}} >
-          {visible ? '보이기' : '숨기기'}
+          {visible ? '숨기기' : '보이기'}
         </button>
       </div>
       <div className = "App-Info">

@@ -96,7 +96,7 @@ useEffect(() => {
 }, []);
 ```
 
-## UseContext
+## useContext
 
 이 `Hooks`를 사용하면 **functional component**에서 `Context`를 보다 쉽게 사용 할 수 있다.
 
@@ -113,3 +113,59 @@ const test = () => {
   (..)
 };
 ```
+
+## useReducer
+
+`useReducer`는 redux의 `reducer`와 비슷한 기능을 하는 `hooks`이다.
+`useReducer` 는 `useState` 보다 컴포넌트에서 더 다양한 상황에 따라 다양한 상태를 다른 값으로 업데이트해주고 싶을 때 사용하는 `Hooks` 이다.
+
+> 리듀서는 현재 상태와, 업데이트를 위해 필요한 정보를 담은 액션(action) 값을 전달 받아 새로운 상태를 반환하는 함수이다. 리듀서 함수에서 새로운 상태를 만들 때는 꼭 불변성을 지켜주어야 한다.
+
+##### reducer
+
+```js
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INCREASE":
+      return { value: state.value + 1 };
+
+    case "DECREASE":
+      return { value: state.value - 1 };
+    default:
+      return state;
+  }
+};
+```
+
+`action`의 `type`을 정해줘야 `reducer`를 사용 할 수 있는데, `type`은 **문자열**이나 **숫자**여도 상관없다.
+
+##### counter
+
+```js
+const Counter = () => {
+  const [state, dispatch] = useReducer(reducer, { value: 0 });
+
+  return (
+    <div>
+      <h1> Counter is {state.value}</h1>
+      <button onClick={() => dispatch({ type: "INCREASE" })}>+</button>
+      <button onClick={() => dispatch({ type: "DECREASE" })}>-</button>
+    </div>
+  );
+};
+```
+
+`state`와 `dispatch`를 `비구조화 할당`으로 선언 후 `state`에는 `reducer`에서 반환되는 값을, `dispatch`에는 바꿔줄 값을 정해준다. (초기에는 초기값이 들어간다.) <br />
+dispatch는 action에 연결해주는 함수라고 생각하면 된다.<br />
+즉, `dispatch({type : "INCREASE"})`는 `reducer`의 `INCREASE` 타입과 매칭 시켜줘 state에 변화를 준다.
+
+---
+
+### continue,,,
+
+- useMemo
+- useCallback
+- useRef
+- custom hook
+- usePromise
+- etc.
